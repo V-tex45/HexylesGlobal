@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Hexyles Global</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 5rem 2rem;
+            min-height: 60vh;
+        }
+        .error-code {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #7f8c8d;
+        }
+        .home-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .home-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}  <!-- If you have a shared header -->
+
+    <main class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-message">Page Not Found</h1>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <a href="{{ url_for('home') }}" class="home-link">Return to Homepage</a>
+    </main>
+
+    {% include 'footer.html' %}  <!-- If you have a shared footer -->
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

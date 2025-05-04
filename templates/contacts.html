@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Hexyles Global</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles to ensure full integration with JS functionality */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 98;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        nav.active {
+            transform: translateX(0);
+        }
+        
+        .no-scroll {
+            overflow: hidden;
+        }
+        
+        .form-alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .form-alert.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .form-alert.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        
+        .has-error input,
+        .has-error textarea,
+        .has-error select {
+            border-color: #e74c3c !important;
+        }
+        
+        .dept-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-map iframe {
+            transition: filter 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Overlay (for JS functionality) -->
+    <div class="mobile-menu-overlay"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="static/images/logo.png" alt="Hexyles Global Logo">
+                <h1>Hexyles Global</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Get in touch with our team</p>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-info">
+                <h3>Our Offices</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Headquarters</h4>
+                        <p>507,Oruba<br>Migori, Kenya</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>+254 707121597<br>+254 750771052</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>hexylesglobal@gmail.com<br>hexylesglobal@gmail.com</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-map">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <!-- Form with proper structure for JS validation -->
+                    <form id="contactForm" action="/submit_contact" method="POST" novalidate>
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" pattern="[+]?[0-9]{10,15}">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="quote">Request a Quote</option>
+                                <option value="service">Service Information</option>
+                                <option value="careers">Career Opportunities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-map">
+                    <!-- Updated Map iframe for Migori, Kenya location -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.729258935183!2d34.4732094153248!3d-1.0631697355697056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDMnNDcuNCJTIDM0wrAyOCcyNy4xIkU!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            aria-label="Hexyles Global Location in Migori, Kenya">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="contact-departments">
+                <h3>Department Contacts</h3>
+                <div class="dept-grid">
+                    <div class="dept-card" data-dept="sales">
+                        <h4>Sales & Marketing</h4>
+                        <p><i class="fas fa-envelope"></i> zeckrobert45@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +254 707121597</p>
+                    </div>
+                    <div class="dept-card" data-dept="projects">
+                        <h4>Project Inquiries</h4>
+                        <p><i class="fas fa-envelope"></i> projects@hexylesglobal.co.ke</p>
+                        <p><i class="fas fa-phone"></i> +254 75071052</p>
+                    </div>
+                    <div class="dept-card" data-dept="hr">
+                        <h4>Human Resources</h4>
+                        <p><i class="fas fa-envelope"></i> thatngore5@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +254 112558977</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <img src="static/images/logo-white.png" alt="Hexyles Global Logo" class="footer-logo">
+                    <p>Building excellence through innovation and quality construction.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 507,Migori,Oruba</p>
+                    <p><i class="fas fa-phone"></i> +254 707121597</p>
+                    <p><i class="fas fa-envelope"></i> hexylesglobal@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                </div>
+                <!-- Add to footer in contact.html or index.html -->
+<div class="mobile-app-promo">
+    <h4>Download Our App</h4>
+    <p>Track projects and make payments on the go</p>
+    <a href="#" class="btn btn-primary">Get Android App</a>
+    <a href="#" class="btn btn-primary">Get iOS App</a>
+  </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2025</span> Hexyles Global. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js" defer></script>
+</body>
+</html>

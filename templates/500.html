@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Hexyles Global</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* [Keep your existing styles] */
+        .error-stack {
+            font-family: monospace;
+            white-space: pre-wrap;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.8em;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main class="error-container">
+        <div class="error-code">500</div>
+        <h1 class="error-message">Internal Server Error</h1>
+        <p>We're experiencing technical difficulties. Our team has been notified.</p>
+        
+        <div class="actions">
+            <a href="{{ url_for('home') }}" class="home-link">Return to Homepage</a>
+            <span style="margin: 0 1rem;">or</span>
+            <a href="{{ url_for('contact') }}" class="contact-link">Contact Support</a>
+        </div>
+        
+        {% if error_context %}
+        <div class="toggle-details" onclick="toggleErrorDetails()">Show technical details</div>
+        <div class="error-details" id="errorDetails">
+            <p><strong>Error Code:</strong> {{ error_context.error_code }}</p>
+            <p><strong>Timestamp:</strong> {{ error_context.timestamp }}</p>
+            <p><strong>Path:</strong> {{ error_context.path }}</p>
+            {% if error_context.error_message %}
+            <p><strong>Message:</strong> {{ error_context.error_message }}</p>
+            {% endif %}
+            {% if error_context.stack_trace and app.debug %}
+            <div class="error-stack">{{ error_context.stack_trace }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </main>
+
+    {% include 'footer.html' %}
+    
+    <script>
+        // Enhanced error tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only track if we have error context
+            {% if error_context %}
+            const errorData = {
+                error_code: 500,
+                path: "{{ error_context.path }}",
+                timestamp: "{{ error_context.timestamp }}",
+                user_agent: navigator.userAgent
+            };
+            
+            navigator.sendBeacon?.('/track_error_view', 
+                new Blob([JSON.stringify(errorData)], {type: 'application/json'}));
+            {% endif %}
+            
+            // Global error handler
+            window.addEventListener('error', function(event) {
+                const errorPayload = {
+                    error: {
+                        message: event.message,
+                        filename: event.filename,
+                        lineno: event.lineno,
+                        colno: event.colno,
+                        error: event.error?.toString()
+                    },
+                    page: window.location.href,
+                    timestamp: new Date().toISOString()
+                };
+                
+                navigator.sendBeacon?.("{{ url_for('report_client_error') }}", 
+                    new Blob([JSON.stringify(errorPayload)], {type: 'application/json'}));
+            });
+        });
+        
+        function toggleErrorDetails() {
+            const details = document.getElementById('errorDetails');
+            const toggle = document.querySelector('.toggle-details');
+            details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            toggle.textContent = details.style.display === 'none' ? 
+                'Show technical details' : 'Hide technical details';
+        }
+    </script>
+</body>
+</html>

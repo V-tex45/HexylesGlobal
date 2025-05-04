@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# React Native/Node
+node_modules/
+.expo/
+dist/
+*.apk
+*.aab
+*.ipa
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/

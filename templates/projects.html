@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - Hexyles Global</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Menu Structure Added -->
+    <div class="mobile-menu-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="static/images/logo.png" alt="Hexyles Global Logo">
+                <h1>Hexyles Global</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h2>Our Projects</h2>
+            <p>Showcasing our construction excellence</p>
+        </div>
+    </section>
+
+    <main class="projects-content">
+        <div class="container">
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project Cards with proper data attributes -->
+                <div class="project-card" data-category="residential">
+                    <img src="static/images/projects/residential1.jpg" alt="Luxury Apartments">
+                    <div class="project-info">
+                        <h3>Luxury Apartments - Kilimani</h3>
+                        <p>A 20-story luxury apartment complex with premium amenities.</p>
+                        <a href="project-details.html?id=1" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="commercial">
+                    <img src="static/images/projects/commercial1.jpg" alt="Corporate Headquarters">
+                    <div class="project-info">
+                        <h3>TechSolutions HQ - Westlands</h3>
+                        <p>Modern corporate headquarters with smart building technology.</p>
+                        <a href="project-details.html?id=2" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="industrial">
+                    <img src="static/images/projects/industrial1.jpg" alt="Manufacturing Plant">
+                    <div class="project-info">
+                        <h3>Alpha Manufacturing Plant</h3>
+                        <p>50,000 sq ft manufacturing facility with warehouse space.</p>
+                        <a href="project-details.html?id=3" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="residential">
+                    <img src="static/images/projects/residential2.jpg" alt="Gated Community">
+                    <div class="project-info">
+                        <h3>Greenview Gated Community</h3>
+                        <p>50-unit luxury homes with community amenities.</p>
+                        <a href="project-details.html?id=4" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="commercial">
+                    <img src="static/images/projects/commercial2.jpg" alt="Shopping Mall">
+                    <div class="project-info">
+                        <h3>Capital Mall - Thika Road</h3>
+                        <p>150,000 sq ft retail space with entertainment facilities.</p>
+                        <a href="project-details.html?id=5" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="industrial">
+                    <img src="static/images/projects/industrial2.jpg" alt="Warehouse Complex">
+                    <div class="project-info">
+                        <h3>Logistics Warehouse - Mombasa</h3>
+                        <p>Distribution center with cold storage facilities.</p>
+                        <a href="project-details.html?id=6" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-number active">1</a>
+                <a href="#" class="page-number">2</a>
+                <a href="#" class="page-number">3</a>
+                <a href="#" class="page-number">4</a>
+                <a href="#" class="next-page"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <section class="project-cta">
+        <div class="container">
+            <h3>Have a Project in Mind?</h3>
+            <p>Our team is ready to bring your vision to life with quality construction.</p>
+            <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="static/images/logo-white.png" alt="Hexyles Global Logo" class="footer-logo">
+                    <p>Building excellence since 2005. We deliver quality construction projects across East Africa.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> ABC Place, Westlands, Nairobi</p>
+                    <p><i class="fas fa-phone"></i> +254 700 123456</p>
+                    <p><i class="fas fa-envelope"></i> info@hexylesglobal.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hexyles Global. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Testimonial Section (Hidden by default, shown by JS) -->
+    <div class="testimonial-slider" style="display: none;">
+        <div class="testimonial active">
+            <blockquote>"Hexyles Global delivered our project on time and within budget."</blockquote>
+            <cite>- John Doe, TechSolutions</cite>
+        </div>
+        <div class="testimonial">
+            <blockquote>"Exceptional quality and attention to detail."</blockquote>
+            <cite>- Jane Smith, Greenview Estates</cite>
+        </div>
+    </div>
+
+    <!-- Contact Form Structure (For pages that include it) -->
+    <div id="contactForm" style="display: none;">
+        <!-- Form would be here -->
+    </div>
+
+    <script src="/static/js/script.js" defer></script>
+</body>
+</html>
