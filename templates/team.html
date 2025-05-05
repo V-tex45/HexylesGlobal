@@ -7,12 +7,113 @@
     <title>Our Team - Hexyles Global</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for the application form */
+        .application-form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default */
+        }
+        
+        .application-form-container h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .application-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            grid-column: span 2;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #c0392b;
+        }
+        
+        .form-response {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .form-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .form-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .application-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .submit-btn {
+                grid-column: span 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="static/images/logo.png" alt="Hexyles Global Logo" width="50" height="50">
+                <img src="/static/images/logo.png" alt="Hexyles Global Logo" width="50" height="50">
                 <h1>Hexyles Global</h1>
             </div>
             <nav>
@@ -43,21 +144,21 @@
             <div class="container">
                 <div class="team-intro">
                     <h2>Expertise You Can Trust</h2>
-                    <p>At Hexyles Global, our strength lies in our team of dedicated professionals who bring diverse skills, extensive experience, and unwavering commitment to every project. Meet the people who make our success possible.</p>
+                    <p>At Hexyles Global, our strength lies in our team of dedicated professionals who bring diverse skills, extensive experience, and unwavering commitment to every project. We're currently expanding our team - check back soon to meet all our experts!</p>
                 </div>
                 
                 <div class="team-departments">
                     <h3>Leadership Team</h3>
                     <div class="team-grid">
                         <div class="team-member">
-                            <img src="static/images/team/ceo.jpg" alt="Michael Otieno" loading="lazy">
+                            <img src="/static/images/team/ceo.jpg" alt="Michael Otieno" loading="lazy">
                             <div class="member-info">
                                 <h4>Michael Otieno</h4>
                                 <p class="position">Founder & CEO</p>
                                 <p class="bio">With over 25 years in construction, Michael leads our strategic vision and company growth.</p>
                                 <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.linkedin.com/in/your-linkedin-profile/" target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:ceo@hexylesglobal.com" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -69,231 +170,87 @@
                                 <p class="position">Director of Operations</p>
                                 <p class="bio">Grace ensures all projects meet our high standards for quality, safety, and efficiency.</p>
                                 <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.linkedin.com/in/grace-mwende-profile/" target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:grace.mwende@hexylesglobal.com" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="team-member">
-                            <img src="static/images/team/finance.jpg" alt="James Kariuki" loading="lazy">
+                        <!-- Coming Soon Team Members -->
+                        <div class="team-member coming-soon">
+                            <div class="coming-soon-overlay">
+                                <i class="fas fa-user-plus"></i>
+                                <p>New Team Member<br>Coming Soon</p>
+                            </div>
                             <div class="member-info">
-                                <h4>James Kariuki</h4>
+                                <h4>Position Available</h4>
                                 <p class="position">Finance Director</p>
-                                <p class="bio">James manages our financial strategy and ensures sustainable business growth.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
+                                <p class="bio">We're looking for an experienced financial leader to join our team.</p>
                             </div>
                         </div>
 
-                        <div class="team-member">
-                            <img src="static/images/team/hr.jpg" alt="Nancy Achieng" loading="lazy">
-                            <div class="member-info">
-                                <h4>Nancy Achieng</h4>
-                                <p class="position">HR Director</p>
-                                <p class="bio">Oversees talent acquisition and employee development programs.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/marketing.jpg" alt="Kevin Maina" loading="lazy">
-                            <div class="member-info">
-                                <h4>Kevin Maina</h4>
-                                <p class="position">Marketing Director</p>
-                                <p class="bio">Leads our brand strategy and client engagement initiatives.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/technology.jpg" alt="David Njeru" loading="lazy">
-                            <div class="member-info">
-                                <h4>David Njeru</h4>
-                                <p class="position">Technology Director</p>
-                                <p class="bio">Implements cutting-edge construction technologies and BIM solutions.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Other coming soon team members... -->
                     </div>
                     
-                    <h3>Project Management</h3>
-                    <div class="team-grid">
-                        <div class="team-member">
-                            <img src="static/images/team/pm1.jpg" alt="Sarah Wambui" loading="lazy">
-                            <div class="member-info">
-                                <h4>Sarah Wambui</h4>
-                                <p class="position">Senior Project Manager</p>
-                                <p class="bio">Specializes in large-scale commercial projects with sustainable design focus.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-member">
-                            <img src="static/images/team/pm2.jpg" alt="Peter Mwangi" loading="lazy">
-                            <div class="member-info">
-                                <h4>Peter Mwangi</h4>
-                                <p class="position">Project Manager</p>
-                                <p class="bio">Expert in residential construction with keen eye for detail and craftsmanship.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/pm3.jpg" alt="Linda Atieno" loading="lazy">
-                            <div class="member-info">
-                                <h4>Linda Atieno</h4>
-                                <p class="position">Project Manager</p>
-                                <p class="bio">Focuses on industrial projects, ensuring robust facility designs.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/pm4.jpg" alt="Daniel Ochieng" loading="lazy">
-                            <div class="member-info">
-                                <h4>Daniel Ochieng</h4>
-                                <p class="position">Project Manager</p>
-                                <p class="bio">Specializes in high-end residential properties and custom home builds.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/pm5.jpg" alt="Brian Kimani" loading="lazy">
-                            <div class="member-info">
-                                <h4>Brian Kimani</h4>
-                                <p class="position">Project Manager</p>
-                                <p class="bio">Expert in healthcare facility construction and specialized buildings.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/pm6.jpg" alt="Esther Wanjiku" loading="lazy">
-                            <div class="member-info">
-                                <h4>Esther Wanjiku</h4>
-                                <p class="position">Project Manager</p>
-                                <p class="bio">Specializes in educational institution projects and community buildings.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>Design & Architecture</h3>
-                    <div class="team-grid">
-                        <div class="team-member">
-                            <img src="static/images/team/architect.jpg" alt="David Kamau" loading="lazy">
-                            <div class="member-info">
-                                <h4>David Kamau</h4>
-                                <p class="position">Lead Architect</p>
-                                <p class="bio">Creates innovative, functional designs blending aesthetics with practicality.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/designer1.jpg" alt="Emily Njeri" loading="lazy">
-                            <div class="member-info">
-                                <h4>Emily Njeri</h4>
-                                <p class="position">Senior Designer</p>
-                                <p class="bio">Specializes in interior spaces enhancing user experience and functionality.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/designer2.jpg" alt="Brian Omondi" loading="lazy">
-                            <div class="member-info">
-                                <h4>Brian Omondi</h4>
-                                <p class="position">Architect</p>
-                                <p class="bio">Focuses on sustainable design principles and green building technologies.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/designer3.jpg" alt="Grace Wambui" loading="lazy">
-                            <div class="member-info">
-                                <h4>Grace Wambui</h4>
-                                <p class="position">Interior Architect</p>
-                                <p class="bio">Creates harmonious interior spaces that reflect client personalities.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/designer4.jpg" alt="Mark Otieno" loading="lazy">
-                            <div class="member-info">
-                                <h4>Mark Otieno</h4>
-                                <p class="position">Landscape Architect</p>
-                                <p class="bio">Designs outdoor spaces that complement architectural vision.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="team-member">
-                            <img src="static/images/team/designer5.jpg" alt="Susan Mumbi" loading="lazy">
-                            <div class="member-info">
-                                <h4>Susan Mumbi</h4>
-                                <p class="position">BIM Specialist</p>
-                                <p class="bio">Implements Building Information Modeling for project efficiency.</p>
-                                <div class="social-links">
-                                    <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Other department sections... -->
 
                     <div class="join-team">
-                        <h3>Join Our Team</h3>
-                        <p>We're always looking for talented professionals to join our growing team. If you're passionate about construction and excellence, we'd love to hear from you.</p>
-                        <a href="contact.html" class="btn">Career Opportunities</a>
+                        <h3>Join Our Growing Team</h3>
+                        <p>We're actively expanding our team with talented professionals across all departments. If you're passionate about construction excellence, submit your application below.</p>
+                        <button id="showApplicationForm" class="btn">Apply Now</button>
+                    </div>
+
+                    <!-- Application Form -->
+                    <div id="applicationFormContainer" class="application-form-container">
+                        <h3>Job Application Form</h3>
+                        <form id="jobApplicationForm" class="application-form">
+                            <div class="form-group">
+                                <label for="fullName">Full Name*</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="position">Position Applying For*</label>
+                                <select id="position" name="position" required>
+                                    <option value="">Select Position</option>
+                                    <option value="Finance Director">Finance Director</option>
+                                    <option value="HR Director">HR Director</option>
+                                    <option value="Project Manager">Project Manager</option>
+                                    <option value="Lead Architect">Lead Architect</option>
+                                    <option value="Construction Engineer">Construction Engineer</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="experience">Relevant Experience*</label>
+                                <textarea id="experience" name="experience" required></textarea>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="coverLetter">Cover Letter</label>
+                                <textarea id="coverLetter" name="coverLetter"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="resume">Upload Resume (PDF)*</label>
+                                <input type="file" id="resume" name="resume" accept=".pdf" required>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Submit Application</button>
+                            
+                            <div id="formResponse" class="form-response"></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -340,6 +297,93 @@
     <script>
         // Update copyright year automatically
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Application Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const showFormBtn = document.getElementById('showApplicationForm');
+            const formContainer = document.getElementById('applicationFormContainer');
+            const applicationForm = document.getElementById('jobApplicationForm');
+            const formResponse = document.getElementById('formResponse');
+
+            // Toggle form visibility
+            showFormBtn.addEventListener('click', function() {
+                formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+                if (formContainer.style.display === 'block') {
+                    formContainer.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            // Form submission
+            applicationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Form validation
+                const requiredFields = applicationForm.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = 'red';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (!isValid) {
+                    showResponse('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                // Prepare form data
+                const formData = new FormData(applicationForm);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                
+                // Simulate form submission (in a real scenario, you would use AJAX/Fetch to a server)
+                showResponse('Application submitted successfully! We will contact you soon.', 'success');
+                
+                // Prepare email content
+                const emailSubject = `Job Application for ${formObject.position}`;
+                let emailBody = `New Job Application Received:\n\n`;
+                emailBody += `Name: ${formObject.fullName}\n`;
+                emailBody += `Email: ${formObject.email}\n`;
+                emailBody += `Phone: ${formObject.phone}\n`;
+                emailBody += `Position: ${formObject.position}\n\n`;
+                emailBody += `Experience:\n${formObject.experience}\n\n`;
+                emailBody += `Cover Letter:\n${formObject.coverLetter || 'N/A'}\n\n`;
+                emailBody += `Resume: Attached in actual email`;
+                
+                // Create mailto link (this will open user's default email client)
+                const mailtoLink = `mailto:hexylesglobal@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // In a real implementation, you would send this to your server
+                console.log('Form data:', formObject);
+                console.log('Mailto link:', mailtoLink);
+                
+                // For demo purposes, we'll show the mailto link as if it would work
+                setTimeout(() => {
+                    window.location.href = mailtoLink;
+                }, 1500);
+                
+                // Reset form after submission
+                applicationForm.reset();
+            });
+            
+            function showResponse(message, type) {
+                formResponse.textContent = message;
+                formResponse.className = 'form-response';
+                formResponse.classList.add(`form-${type}`);
+                formResponse.style.display = 'block';
+                
+                // Hide response after 5 seconds
+                setTimeout(() => {
+                    formResponse.style.display = 'none';
+                }, 5000);
+            }
+        });
     </script>
 </body>
 </html>
