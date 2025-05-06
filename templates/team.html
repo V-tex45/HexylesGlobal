@@ -110,24 +110,29 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
     <header>
         <div class="container">
             <div class="logo">
                 <img src="/static/images/logo.png" alt="Hexyles Global Logo" width="50" height="50">
                 <h1>Hexyles Global</h1>
             </div>
-            <nav>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
                     <li><a href="team.html" class="active">Our Team</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon" style="display: none;"></i>
             </button>
         </div>
     </header>
@@ -153,9 +158,9 @@
                         <div class="team-member">
                             <img src="/static/images/team/ceo.jpg" alt="Michael Otieno" loading="lazy">
                             <div class="member-info">
-                                <h4>Michael Otieno</h4>
+                                <h4>Zeck Robert</h4>
                                 <p class="position">Founder & CEO</p>
-                                <p class="bio">With over 25 years in construction, Michael leads our strategic vision and company growth.</p>
+                                <p class="bio">With over 7 years in construction, zeck leads our strategic vision and company growth.</p>
                                 <div class="social-links">
                                     <a href="https://www.linkedin.com/in/your-linkedin-profile/" target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
                                     <a href="mailto:ceo@hexylesglobal.com" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
@@ -166,9 +171,9 @@
                         <div class="team-member">
                             <img src="static/images/team/director.jpg" alt="Grace Mwende" loading="lazy">
                             <div class="member-info">
-                                <h4>Grace Mwende</h4>
+                                <h4>Mark Oyaya</h4>
                                 <p class="position">Director of Operations</p>
-                                <p class="bio">Grace ensures all projects meet our high standards for quality, safety, and efficiency.</p>
+                                <p class="bio">mark ensures all projects meet our high standards for quality, safety, and efficiency.</p>
                                 <div class="social-links">
                                     <a href="https://www.linkedin.com/in/grace-mwende-profile/" target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
                                     <a href="mailto:grace.mwende@hexylesglobal.com" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
@@ -271,6 +276,8 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
+                        <li><a href="team.html">Our Team</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

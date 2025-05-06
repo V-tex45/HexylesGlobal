@@ -72,6 +72,72 @@
         .contact-map iframe {
             transition: filter 0.3s ease;
         }
+        
+        /* Payment Section Styles */
+        .payment-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .payment-option {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            transition: transform 0.3s ease;
+        }
+        
+        .payment-option:hover {
+            transform: translateY(-10px);
+        }
+        
+        .payment-option i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        .payment-option h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            padding: 8px 20px;
+            margin-top: 15px;
+            display: inline-block;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +156,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
                     <li><a href="team.html">Our Team</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
@@ -204,6 +271,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- New Payment Section Added Here -->
+            <section class="payment-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h3>Online Payments</h3>
+                        <p>Make secure payments for your projects online</p>
+                    </div>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>M-Pesa Payments</h4>
+                            <p>Fast and secure mobile payments</p>
+                            <a href="payment.html?method=mpesa" class="btn btn-outline">Pay with M-Pesa</a>
+                        </div>
+                        <div class="payment-option">
+                            <i class="fas fa-university"></i>
+                            <h4>Bank Transfers</h4>
+                            <p>Direct bank transfers</p>
+                            <a href="payment.html?method=bank" class="btn btn-outline">Pay via Bank</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
@@ -227,6 +318,7 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
                         <li><a href="team.html">Our Team</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -239,13 +331,12 @@
                     <p><i class="fas fa-envelope"></i> hexylesglobal@gmail.com</p>
                     <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
                 </div>
-                <!-- Add to footer in contact.html or index.html -->
-<div class="mobile-app-promo">
-    <h4>Download Our App</h4>
-    <p>Track projects and make payments on the go</p>
-    <a href="#" class="btn btn-primary">Get Android App</a>
-    <a href="#" class="btn btn-primary">Get iOS App</a>
-  </div>
+                <div class="mobile-app-promo">
+                    <h4>Download Our App</h4>
+                    <p>Track projects and make payments on the go</p>
+                    <a href="#" class="btn btn-primary">Get Android App</a>
+                    <a href="#" class="btn btn-primary">Get iOS App</a>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year">2025</span> Hexyles Global. All Rights Reserved.</p>

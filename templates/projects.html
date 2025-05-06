@@ -6,6 +6,46 @@
     <title>Our Projects - Hexyles Global</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add this new style for the payment CTA */
+        .payment-cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/images/payment-cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+        
+        .payment-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .payment-cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .payment-cta .btn {
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-cta .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+    </style>
 </head>
 <body>
     <!-- Mobile Menu Structure Added -->
@@ -23,6 +63,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
                     <li><a href="team.html">Our Team</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -77,6 +118,15 @@
                 </div>
             </div>
             
+            <!-- New Payment CTA Section Added Here -->
+            <section class="payment-cta">
+                <div class="container">
+                    <h3>Ready to Start Your Project?</h3>
+                    <p>Secure your construction project with our easy payment system</p>
+                    <a href="payment.html" class="btn btn-primary">Make Payment</a>
+                </div>
+            </section>
+            
             <div class="project-cta">
                 <h3>Have a Project in Mind?</h3>
                 <p>Be among the first to showcase your project with Hexyles Global</p>
@@ -99,6 +149,8 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
+                        <li><a href="team.html">Our Team</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

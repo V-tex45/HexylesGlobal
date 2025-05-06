@@ -57,9 +57,9 @@ def create_tables():
     if not TeamMember.query.first():
         sample_members = [
             TeamMember(
-                name="Michael Otieno",
+                name="ZECK ROBERT",
                 position="Founder & CEO",
-                bio="With over 25 years in construction, Michael leads our strategic vision and company growth.",
+                bio="With over 7 years in construction, Zeck leads our strategic vision and company growth.",
                 image_path="team/ceo.jpg",
                 department="Leadership"
             ),

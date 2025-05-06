@@ -4,53 +4,325 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment | Hexyles Global</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Payment Page Specific Styles */
+        .payment-page {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .payment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .payment-container h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .method-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .method-card:hover {
+            border-color: #e74c3c;
+        }
+        
+        .method-card img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .method-card input[type="radio"] {
+            display: none;
+        }
+        
+        .pay-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .pay-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .status-container {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+        
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+            
+            .method-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="payment-container">
-        <h2>Make Payment</h2>
-        <form id="paymentForm">
-            <div class="form-group">
-                <label for="amount">Amount (KES)</label>
-                <input type="number" id="amount" required>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/logo.png" alt="Hexyles Global Logo">
+                <h1>Hexyles Global</h1>
             </div>
-            
-            <div class="form-group">
-                <label>Payment Method</label>
-                <div class="payment-methods">
-                    <label class="method-card" data-method="mpesa">
-                        <img src="{{ url_for('static', filename='images/payments/mpesa.png') }}" alt="M-Pesa">
-                        <input type="radio" name="method" value="mpesa" required>
-                    </label>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Project Gallery</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="payment-page">
+        <div class="container">
+            <div class="payment-container">
+                <h2>Make Payment</h2>
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="amount">Amount (KES)</label>
+                        <input type="number" id="amount" required>
+                    </div>
                     
-                    <label class="method-card" data-method="equity">
-                        <img src="{{ url_for('static', filename='images/payments/equity.png') }}" alt="Equity Bank">
-                        <input type="radio" name="method" value="equity">
-                    </label>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="payment-methods">
+                            <label class="method-card" data-method="mpesa">
+                                <img src="/static/images/payments/mpesa.png" alt="M-Pesa">
+                                <p>M-Pesa</p>
+                                <input type="radio" name="method" value="mpesa" required>
+                            </label>
+                            
+                            <label class="method-card" data-method="equity">
+                                <img src="/static/images/payments/equity.png" alt="Equity Bank">
+                                <p>Equity Bank</p>
+                                <input type="radio" name="method" value="equity">
+                            </label>
+                            
+                            <label class="method-card" data-method="coop">
+                                <img src="/static/images/payments/coop.png" alt="Cooperative Bank">
+                                <p>Co-op Bank</p>
+                                <input type="radio" name="method" value="coop">
+                            </label>
+                        </div>
+                    </div>
                     
-                    <label class="method-card" data-method="coop">
-                        <img src="{{ url_for('static', filename='images/payments/coop.png') }}" alt="Cooperative Bank">
-                        <input type="radio" name="method" value="coop">
-                    </label>
+                    <div class="form-group" id="phoneField" style="display:none;">
+                        <label for="phone">M-Pesa Phone Number</label>
+                        <input type="tel" id="phone" placeholder="e.g. 254712345678">
+                    </div>
+                    
+                    <div class="form-group" id="accountField" style="display:none;">
+                        <label for="account">Account Number</label>
+                        <input type="text" id="account">
+                    </div>
+                    
+                    <button type="submit" class="pay-btn">Proceed to Pay</button>
+                </form>
+                
+                <div id="paymentStatus" class="status-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <img src="/static/images/logo-white.png" alt="Hexyles Global Logo" class="footer-logo">
+                    <p>Building excellence through innovation and quality construction.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Project Gallery</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 507,Migori,Oruba</p>
+                    <p><i class="fas fa-phone"></i> +254 707121597</p>
+                    <p><i class="fas fa-envelope"></i> hexylesglobal@gmail.com</p>
                 </div>
             </div>
-            
-            <div class="form-group" id="phoneField" style="display:none;">
-                <label for="phone">M-Pesa Phone Number</label>
-                <input type="tel" id="phone" placeholder="e.g. 254712345678">
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2025</span> Hexyles Global. All Rights Reserved.</p>
             </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update copyright year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
             
-            <div class="form-group" id="accountField" style="display:none;">
-                <label for="account">Account Number</label>
-                <input type="text" id="account">
-            </div>
+            // Payment method selection
+            const paymentForm = document.getElementById('paymentForm');
+            const phoneField = document.getElementById('phoneField');
+            const accountField = document.getElementById('accountField');
+            const paymentStatus = document.getElementById('paymentStatus');
             
-            <button type="submit" class="pay-btn">Proceed to Pay</button>
-        </form>
-        
-        <div id="paymentStatus" class="status-container"></div>
-    </div>
-    
-    <script src="{{ url_for('static', filename='js/payment.js') }}"></script>
+            // Show relevant fields based on payment method
+            document.querySelectorAll('input[name="method"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    phoneField.style.display = 'none';
+                    accountField.style.display = 'none';
+                    
+                    if (this.value === 'mpesa') {
+                        phoneField.style.display = 'block';
+                    } else if (this.value === 'equity' || this.value === 'coop') {
+                        accountField.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Form submission
+            paymentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const amount = document.getElementById('amount').value;
+                const method = document.querySelector('input[name="method"]:checked').value;
+                let isValid = true;
+                
+                if (!amount || isNaN(amount) || amount <= 0) {
+                    showStatus('Please enter a valid amount', 'error');
+                    isValid = false;
+                }
+                
+                if (method === 'mpesa' && !document.getElementById('phone').value) {
+                    showStatus('Please enter your M-Pesa phone number', 'error');
+                    isValid = false;
+                }
+                
+                if ((method === 'equity' || method === 'coop') && !document.getElementById('account').value) {
+                    showStatus('Please enter your account number', 'error');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Simulate payment processing
+                    showStatus('Processing payment...', 'info');
+                    
+                    // In a real implementation, you would send this to your payment processor
+                    setTimeout(() => {
+                        showStatus('Payment successful! Thank you for your payment.', 'success');
+                        paymentForm.reset();
+                    }, 2000);
+                }
+            });
+            
+            function showStatus(message, type) {
+                paymentStatus.textContent = message;
+                paymentStatus.className = 'status-container';
+                paymentStatus.classList.add(`status-${type}`);
+                paymentStatus.style.display = 'block';
+                
+                // Scroll to status message
+                paymentStatus.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
 </body>
 </html>
