@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, request, jsonify, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
@@ -6,6 +5,8 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash
+import base64
+import requests
 
 # Load environment variables
 load_dotenv()
@@ -190,58 +191,21 @@ def api_contact():
             'message': 'An error occurred. Please try again later.'
         }), 500
 
-# Error handlers
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    # Log the error
-    app.logger.error(f"500 Error: {str(e)}")
-    
-    # Create error context
-    error_context = {
-        'error_code': 500,
-        'error_message': str(e) or 'Internal Server Error',
-        'timestamp': datetime.now().isoformat(),
-        'path': request.path
-    }
-    
-    return render_template('500.html', error_context=error_context), 500
-
-if __name__ == '__main__':
-    # Create necessary directories
-    os.makedirs('templates', exist_ok=True)
-    os.makedirs('static/css', exist_ok=True)
-    os.makedirs('static/images', exist_ok=True)
-    os.makedirs('static/js', exist_ok=True)
-    
-    # Run the application
-    app.run(debug=True)
-
-    
-
-    from flask import Flask, request, jsonify
-import requests
-from datetime import datetime
-
-app = Flask(__name__)
-
 # Payment Configurations
 PAYMENT_CONFIG = {
     'equity': {
         'api_url': 'https://api.equitybankgroup.com/v1/payments',
-        'api_key': 'YOUR_EQUITY_API_KEY'
+        'api_key': os.getenv('EQUITY_API_KEY')
     },
     'coop': {
         'api_url': 'https://developer.co-opbank.co.ke/api/payments',
-        'api_key': 'YOUR_COOP_API_KEY'
+        'api_key': os.getenv('COOP_API_KEY')
     },
     'mpesa': {
         'api_url': 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
-        'consumer_key': 'YOUR_MPESA_CONSUMER_KEY',
-        'consumer_secret': 'YOUR_MPESA_CONSUMER_SECRET'
+        'consumer_key': os.getenv('MPESA_CONSUMER_KEY'),
+        'consumer_secret': os.getenv('MPESA_CONSUMER_SECRET'),
+        'passkey': os.getenv('MPESA_PASSKEY')
     }
 }
 
@@ -284,7 +248,7 @@ def mpesa_payment(amount, phone):
         "PartyA": phone,
         "PartyB": "174379",
         "PhoneNumber": phone,
-        "CallBackURL": "https://yourdomain.com/mpesa-callback",
+        "CallBackURL": f"{request.host_url}/mpesa-callback",
         "AccountReference": "HEXYLES",
         "TransactionDesc": "Construction Services" 
     }
@@ -346,7 +310,35 @@ def coop_payment(amount, account):
 
 def generate_mpesa_password():
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    return base64.b64encode(f"174379{YOUR_MPESA_PASSKEY}{timestamp}".encode()).decode()
+    passkey = PAYMENT_CONFIG['mpesa']['passkey']
+    return base64.b64encode(f"174379{passkey}{timestamp}".encode()).decode()
+
+# Error handlers
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    # Log the error
+    app.logger.error(f"500 Error: {str(e)}")
+    
+    # Create error context
+    error_context = {
+        'error_code': 500,
+        'error_message': str(e) or 'Internal Server Error',
+        'timestamp': datetime.now().isoformat(),
+        'path': request.path
+    }
+    
+    return render_template('500.html', error_context=error_context), 500
 
 if __name__ == '__main__':
-    app.run(ssl_context='adhoc')  # HTTPS required for payment APIs
+    # Create necessary directories
+    os.makedirs('templates', exist_ok=True)
+    os.makedirs('static/css', exist_ok=True)
+    os.makedirs('static/images', exist_ok=True)
+    os.makedirs('static/js', exist_ok=True)
+    
+    # Run the application
+    app.run(debug=True, ssl_context='adhoc')

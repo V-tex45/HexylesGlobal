@@ -69,8 +69,23 @@
             transition: all 0.3s ease;
         }
         
-        .contact-map iframe {
-            transition: filter 0.3s ease;
+        .contact-map {
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .contact-map .map-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .contact-map .map-placeholder i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 15px;
         }
         
         /* Payment Section Styles */
@@ -183,7 +198,7 @@
                     <div class="info-card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h4>Headquarters</h4>
-                        <p>507,Oruba<br>Migori, Kenya</p>
+                        <p>507, Oruba<br>Migori, Kenya</p>
                     </div>
                     <div class="info-card">
                         <i class="fas fa-phone"></i>
@@ -239,15 +254,11 @@
                 </div>
                 
                 <div class="contact-map">
-                    <!-- Updated Map iframe for Migori, Kenya location -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.729258935183!2d34.4732094153248!3d-1.0631697355697056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDMnNDcuNCJTIDM0wrAyOCcyNy4xIkU!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske"
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            aria-label="Hexyles Global Location in Migori, Kenya">
-                    </iframe>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Our Location</h4>
+                        <p>507, Oruba<br>Migori, Kenya</p>
+                    </div>
                 </div>
             </div>
             
@@ -325,7 +336,7 @@
                 </div>
                 <div class="footer-section contact">
                     <h4>Contact Us</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> 507,Migori,Oruba</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 507, Migori, Oruba</p>
                     <p><i class="fas fa-phone"></i> +254 707121597</p>
                     <p><i class="fas fa-phone"></i> +254 112832102</p>
                     <p><i class="fas fa-envelope"></i> hexylesglobal@gmail.com</p>
